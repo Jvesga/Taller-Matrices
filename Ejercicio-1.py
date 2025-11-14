@@ -8,7 +8,6 @@ resultante=[]
 K= int(input("Digite un numero entero: "))
 M= int(input("Digite numero de filas: "))
 A= int(input("Digite numero de columnas: "))
-resultado=0
 
 for i in range (M):
     matriz.append([])
@@ -37,4 +36,5 @@ for M in resultante:
     for elemento in M:
         print(f"{elemento}", end=" ")
     print()
+
 
