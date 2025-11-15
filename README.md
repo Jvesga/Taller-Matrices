@@ -1,6 +1,4 @@
 # Taller de matrices
-# Nota:
-Cada ejercicio tiene una breve explicacion del codigo usado al final.
 
 ## Ejercicio 1.
 Leer una matriz de orden M*A y un numero K
@@ -43,16 +41,192 @@ for M in resultante:
         print(f"{elemento}", end=" ")
     print()
 ```
-## Explicacion del codigo.
-primero se crean dos listas o arreglos vacios para almacenar la matriz original y otra para los resultados
-despues se pide la constante identificada con (K), se pide el numero de filas de la matriz original identificada con la letra (M) y por ultimo se piden el numero de columnas con la variable (A).
-despues se crea la matriz con la estructura for ya que en python se usa de esa forma
-lo que hacen estas lineas es crear una estructura de matriz con vectroes siendo (M) las filas y A las columnas se crean vacias para almacenar despues datos.
-despues se hace el llenado de la matriz pidiendo numeros al usuario y ubicandolos en cada posicion de la matriz con la linea de codigo 
-```python
-matriz[j][i]=int(input("Digite un numero: "))
+## Ejercicio 2.
+Lea dos matrices N * M y a continuación:
+a)Genere una tercera con la suma de ambas
+b)Genere una cuarta con la multiplicación de ambas, si es posible
+Muestre las matrices resultantes
+
+``` python
+filas_A = int(input("Filas de matriz A: "))
+columnas_A = int(input("Columnas de matriz A: "))
+
+filas_B = int(input("Filas de matriz B: ")) 
+columnas_B = int(input("Columnas de matriz B: ")) 
+
+matriz_A = []
+for i in range(filas_A):
+    matriz_A.append([])
+    for j in range(columnas_A):
+        matriz_A[i].append(None)
+
+for i in range(filas_A):
+    for j in range(columnas_A):
+        matriz_A[i][j] = int(input(f"inserte el numero de la posicion [{i+1}][{j+1}]de la matriz A: "))
+
+matriz_B = []
+for i in range(filas_B):
+    matriz_B.append([])
+    for j in range(columnas_B):
+        matriz_B[i].append(None)
+
+
+for i in range(filas_B):
+    for j in range(columnas_B):
+        matriz_B[i][j] = int(input(f"inserte el numero de la posicion [{i+1}][{j+1}] de la matriz B: "))
+
+
+print("Matriz A:")
+for i in range(filas_A):
+    for j in range(columnas_A):
+        print(matriz_A[i][j], end=" ")
+    print()
+
+
+print("Matriz B:")
+for i in range(filas_B):
+    for j in range(columnas_B):
+        print(matriz_B[i][j], end=" ")
+    print()
+
+
+if filas_A == filas_B and columnas_A == columnas_B:
+    matriz_C = []
+    for i in range(filas_A):
+        fila = []
+        for j in range(columnas_A):
+            suma = matriz_A[i][j] + matriz_B[i][j]
+            fila.append(suma)
+        matriz_C.append(fila)
+    
+    print("Matriz C:")
+    for i in range(filas_A):
+        for j in range(columnas_A):
+            print(matriz_C[i][j], end=" ")
+        print()
+
+if columnas_A == filas_B:
+    matriz_D = []
+    for i in range(filas_A):
+        fila = []
+        for j in range(columnas_B):
+            suma = 0
+            for k in range(columnas_A):
+                suma = suma + matriz_A[i][k] * matriz_B[k][j]
+            fila.append(suma)
+        matriz_D.append(fila)
+    
+    print("Matriz D:")
+    for i in range(filas_A):
+        for j in range(columnas_B):
+            print(matriz_D[i][j], end=" ")
+        print()
 ```
-posterior a eso se crea otra matriz vacia (M*A)
-ahora se recorre cada fila y se multiplica cada elemento de la matriz original por la constante y se guarda en la matriz resultante.
-y por ultimo se imprime el titulo y con un for se recorren las filas de la matriz resultante y se imprime cada elemento quitando el salto de linea con (end="")
-y en la ultima linea se imprime un salto para mas estetica. 
+## Ejercicio 3.
+Hacer un algoritmo que llene una matriz de 3*3 y determine la posicion [Renglon, columna]
+del numero mayor almacenado en la matriz.
+
+``` python
+matriz = []
+
+filas= 3
+columnas= 3
+
+for i in range (filas):
+    matriz.append([])
+    for j in range(columnas):
+        matriz[i].append(None)
+
+for j in range (0,filas):
+    for i in range(0,columnas):
+        matriz[j][i]=int(input("Digite un numero: "))
+    
+print("\nMatriz resultante:")
+for M in matriz:
+    for elemento in M:
+        print(f"{elemento}", end=" ")
+    print()
+
+numero_M = matriz[0][0]
+filaM=0
+columnaM=0
+
+for i in range(3):
+    for j in range(3):
+        if matriz [i][j] > numero_M:
+            numero_M=matriz[i][j]
+            filaM=i+1
+            columnaM=j+1
+print(f"El numero mayo se encuentra en: la fila {filaM} y la columna {columnaM} y es el numero {numero_M}")
+```
+## Ejercicio 4.
+Hacer un algoritmo que llene una matriz de 4*4. 
+Calcular la suma de cada renglón y almacenarla en un vector, 
+la suma de cada columna y almacenarla en otro vector.
+
+``` python
+matriz=[]
+
+
+for i in range (4):
+    matriz.append([])
+    for j in range(4):
+        matriz[i].append(None)
+
+for j in range (0,4):
+    for i in range(0,4):
+        matriz[j][i]=int(input("Digite un numero: "))
+
+print("---Suma de renglones---")
+suma_renglones=[]
+for i in range(4):
+    suma=0
+    for j in range(4):
+        suma=suma + matriz[i][j]
+    suma_renglones.append(suma)
+print(suma_renglones)
+
+print("---Suma de columnas---")
+suma_columnas=[]
+for j in range(4):
+    suma2=0
+    for i in range(4):
+        suma2= suma2 + matriz[i][j]
+    suma_columnas.append(suma2)
+print(suma_columnas)
+```
+## Ejercicio 5.
+Hacer un algoritmo que llene una matriz de 5 * 5 y 
+que almacene la diagonal principal en un vector. 
+Imprimir el vector resultante.
+
+``` python
+matriz = []
+
+filas= 5
+columnas= 5
+
+for i in range (filas):
+    matriz.append([])
+    for j in range(columnas):
+        matriz[i].append(None)
+
+for j in range (0,filas):
+    for i in range(0,columnas):
+        matriz[j][i]=int(input("Digite un numero: "))
+    
+print("\nMatriz resultante:")
+for M in matriz:
+    for elemento in M:
+        print(f"{elemento}", end=" ")
+    print()
+
+diagonal=[]
+
+for i in range(5):
+    numero = matriz[i][i]
+    diagonal.append(numero)
+    print(f"Posicion [{i+1}][{i+1}] = {numero}")
+print("---Diagonal de la matriz 5*5---")
+print(diagonal)
+```
